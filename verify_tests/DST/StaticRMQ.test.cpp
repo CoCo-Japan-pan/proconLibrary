@@ -11,7 +11,7 @@
 using namespace std;
 using ll = long long;
 
-#include "myLibrary/DST.hpp"
+#include "data_structure/DST.hpp"
 
 #define ALL(x) (x).begin(), (x).end()
 template <class T> using vec = vector<T>;
