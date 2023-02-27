@@ -1,4 +1,6 @@
 #line 1 "StaticRMQ.test.cpp"
+#define PROBLEM "https://judge.yosupo.jp/problem/staticrmq"
+
 // 提出時にassertはオフ
 #ifndef DEBUG
 #ifndef NDEBUG
@@ -10,10 +12,10 @@
 using namespace std;
 using ll = long long;
 
-#line 2 "/home/cocojapanpan/Procon_CPP/include/proconLibrary/DST.hpp"
+#line 2 "/home/cocojapanpan/Procon_CPP/include/proconLibrary/myLibrary/DST.hpp"
 
 #ifdef NOBUNDLE
-#line 5 "/home/cocojapanpan/Procon_CPP/include/proconLibrary/DST.hpp"
+#line 5 "/home/cocojapanpan/Procon_CPP/include/proconLibrary/myLibrary/DST.hpp"
 using namespace std;
 #endif
 
@@ -71,7 +73,7 @@ struct DisjointSparseTable {
     vector<vector<T>> data; // data[i][j]で、[j, MSSB) または [MSSB, j]
     vector<int> MSSBTable;  // most significant set bit
 };
-#line 13 "StaticRMQ.test.cpp"
+#line 15 "StaticRMQ.test.cpp"
 
 #define ALL(x) (x).begin(), (x).end()
 template <class T> using vec = vector<T>;

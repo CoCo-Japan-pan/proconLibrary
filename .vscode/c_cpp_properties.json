@@ -3,7 +3,7 @@
         {
             "name": "Linux",
             "includePath": [
-                "~/Procon_CPP/include"
+                "~/Procon_CPP/include/proconLibrary"
             ],
             "defines": [
                 "DEBUG = 1",
