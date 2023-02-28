@@ -6,6 +6,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/DisjointSparseTable.hpp
       title: data_structure/DisjointSparseTable.hpp
+  - name: string
+    pages:
+    - icon: ':warning:'
+      path: string/rollinghash.hpp
+      title: string/rollinghash.hpp
   verificationCategories:
   - name: verify_tests/DST
     pages:
