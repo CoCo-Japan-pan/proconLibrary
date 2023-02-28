@@ -12,10 +12,10 @@
 using namespace std;
 using ll = long long;
 
-#line 2 "/home/cocojapanpan/Procon_CPP/include/proconLibrary/myLibrary/DST.hpp"
+#line 2 "/home/cocojapanpan/Procon_CPP/include/proconLibrary/data_structure/DisjointSparseTable.hpp"
 
 #ifdef NOBUNDLE
-#line 5 "/home/cocojapanpan/Procon_CPP/include/proconLibrary/myLibrary/DST.hpp"
+#line 5 "/home/cocojapanpan/Procon_CPP/include/proconLibrary/data_structure/DisjointSparseTable.hpp"
 using namespace std;
 #endif
 
@@ -24,11 +24,11 @@ using namespace std;
 // 更新はできないが、クエリはO(1)!!! (前計算にO(nlogn))
 
 template <class T>
-struct DisjointSparseTable {
+struct DST {
     using OperatorType = function<T(T, T)>;
 
    public:
-    DisjointSparseTable(const vector<T> &vec, const OperatorType op) : _size(vec.size()), _op(op) {
+    DST(const vector<T> &vec, const OperatorType &op) : _size(vec.size()), _op(op) {
         int depth = 1;
         while((1 << depth) <= _size) depth++;
         data.assign(depth, vector<T>(_size));
@@ -85,7 +85,7 @@ int main() {
     cin >> N >> Q;
     vec<int> A(N);
     for(int &a : A) cin >> a;
-    DisjointSparseTable<int> dst(A, [](int a, int b){return min(a, b);});
+    DST<int> dst(A, [](int a, int b){return min(a, b);});
     for(int i = 0; i < Q; i++){
         int l, r;
         cin >> l >> r;

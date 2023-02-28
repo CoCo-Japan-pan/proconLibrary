@@ -10,11 +10,11 @@ using namespace std;
 // 更新はできないが、クエリはO(1)!!! (前計算にO(nlogn))
 
 template <class T>
-struct DisjointSparseTable {
+struct DST {
     using OperatorType = function<T(T, T)>;
 
    public:
-    DisjointSparseTable(const vector<T> &vec, const OperatorType op) : _size(vec.size()), _op(op) {
+    DST(const vector<T> &vec, const OperatorType op) : _size(vec.size()), _op(op) {
         int depth = 1;
         while((1 << depth) <= _size) depth++;
         data.assign(depth, vector<T>(_size));

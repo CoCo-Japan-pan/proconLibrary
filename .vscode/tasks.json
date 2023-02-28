@@ -18,7 +18,7 @@
                 "-D_GLIBCXX_DEBUG", // STLのassert類
                 "-D DEBUG", // LOCALでDEBUGしたいときのみ実行するassertとか
                 "-I", //AtCoderLibraryをincludeするため追記
-                "~/Procon_CPP/include/", //AtCoderLibraryをincludeするため追記
+                "~/Procon_CPP/include/proconLibrary", //proconLibraryをincludeするため追記
                 "-g",
                 "${file}",
                 "-o",

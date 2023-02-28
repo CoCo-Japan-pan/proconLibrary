@@ -11,7 +11,7 @@
 using namespace std;
 using ll = long long;
 
-#include "data_structure/DST.hpp"
+#include "data_structure/DisjointSparseTable.hpp"
 
 #define ALL(x) (x).begin(), (x).end()
 template <class T> using vec = vector<T>;
@@ -23,7 +23,7 @@ int main() {
     cin >> N >> Q;
     vec<int> A(N);
     for(int &a : A) cin >> a;
-    DisjointSparseTable<int> dst(A, [](int a, int b){return min(a, b);});
+    DST<int> dst(A, [](int a, int b){return min(a, b);});
     for(int i = 0; i < Q; i++){
         int l, r;
         cin >> l >> r;
