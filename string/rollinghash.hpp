@@ -1,20 +1,11 @@
 #pragma once
 
-#ifdef NOBUNDLE
 #include <bits/stdc++.h>
 using namespace std;
-using ll = long long;
-#endif
 
 struct rolhash_mod {
+    using ll = long long;
    public:
-    // [2, MOD - 2]のbaseを乱数として生成
-    static ll genBase() {
-        random_device seed;     // 非決定的な乱数
-        mt19937_64 mt(seed());  // メルセンヌ・ツイスタ 64bit
-        uniform_int_distribution<ll> randbase(2LL, MOD - 2);
-        return randbase(mt);
-    }
     // べき乗のmod(tableを用意せずその場でやってるのでlog(beki)かかる)
     constexpr static ll power(ll base, ll beki) {
         rolhash_mod curbekiMod(base);
@@ -58,7 +49,7 @@ struct rolhash_mod {
         rolhash_mod cpy(*this);
         return cpy *= a;
     }
-    constexpr bool operator==(const rolhash_mod &a) { return value == a.value; }
+    constexpr bool operator==(const rolhash_mod &a) const { return value == a.value; }
 
    private:
     ll value;  // 中で保持しておくmod
@@ -72,10 +63,11 @@ struct rolhash_mod {
 
 // 部分文字列[l,r)のhash値を返すqueryを定数時間で
 struct rolhash {
+    using ll = long long;
    public:
     template <class T>
-    rolhash(const vector<T> &input) {
-        base = rolhash_mod::genBase();
+    rolhash(const std::vector<T> &input) {
+        base = genBase();
         N = input.size();
         basebeki_table.resize(N + 1);
         basebeki_table[0] = 1;
@@ -102,7 +94,15 @@ struct rolhash {
     const ll base;
     const int N;
     // baseの0乗からN乗を記録
-    vector<rolhash_mod> basebeki_table;
+    std::vector<rolhash_mod> basebeki_table;
     // [0,i)の部分列のhash値を記録
-    vector<rolhash_mod> front_table;
+    std::vector<rolhash_mod> front_table;
+    
+    // [2, MOD - 2]のbaseを乱数として生成
+    static ll genBase() {
+        random_device seed;     // 非決定的な乱数
+        mt19937_64 mt(seed());  // メルセンヌ・ツイスタ 64bit
+        uniform_int_distribution<ll> randbase(2LL, MOD - 2);
+        return randbase(mt);
+    }
 };
