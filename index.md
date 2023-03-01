@@ -8,7 +8,7 @@ data:
       title: data_structure/DisjointSparseTable.hpp
   - name: string
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: string/rollinghash.hpp
       title: string/rollinghash.hpp
   verificationCategories:
@@ -17,5 +17,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify_tests/DST/StaticRMQ.test.cpp
       title: verify_tests/DST/StaticRMQ.test.cpp
+  - name: verify_tests/rollinghash
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify_tests/rollinghash/z_algorithm.test.cpp
+      title: verify_tests/rollinghash/z_algorithm.test.cpp
 layout: toppage
 ---
