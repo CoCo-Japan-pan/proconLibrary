@@ -8,10 +8,10 @@
 #endif
 
 #include <bits/stdc++.h>
+#include "data_structure/DisjointSparseTable.hpp"
 using namespace std;
 using ll = long long;
 
-#include "data_structure/DisjointSparseTable.hpp"
 
 #define ALL(x) (x).begin(), (x).end()
 template <class T> using vec = vector<T>;
