@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: myLibrary/rollinghash.hpp
-    title: myLibrary/rollinghash.hpp
+    title: rollinghash
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false

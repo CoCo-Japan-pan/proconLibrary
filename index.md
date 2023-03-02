@@ -5,13 +5,13 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: myLibrary/DisjointSparseTable.hpp
-      title: myLibrary/DisjointSparseTable.hpp
+      title: Disjoint Sparse Table
     - icon: ':warning:'
       path: myLibrary/inner_math.hpp
       title: myLibrary/inner_math.hpp
     - icon: ':heavy_check_mark:'
       path: myLibrary/rollinghash.hpp
-      title: myLibrary/rollinghash.hpp
+      title: rollinghash
   verificationCategories:
   - name: verify_tests/DST
     pages:

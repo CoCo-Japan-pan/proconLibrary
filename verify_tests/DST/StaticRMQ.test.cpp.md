@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: myLibrary/DisjointSparseTable.hpp
-    title: myLibrary/DisjointSparseTable.hpp
+    title: Disjoint Sparse Table
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
