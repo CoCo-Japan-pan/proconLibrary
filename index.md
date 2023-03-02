@@ -1,16 +1,17 @@
 ---
 data:
   libraryCategories:
-  - name: data_structure
+  - name: myLibrary
     pages:
     - icon: ':heavy_check_mark:'
-      path: data_structure/DisjointSparseTable.hpp
-      title: data_structure/DisjointSparseTable.hpp
-  - name: string
-    pages:
+      path: myLibrary/DisjointSparseTable.hpp
+      title: myLibrary/DisjointSparseTable.hpp
+    - icon: ':warning:'
+      path: myLibrary/inner_math.hpp
+      title: myLibrary/inner_math.hpp
     - icon: ':heavy_check_mark:'
-      path: string/rollinghash.hpp
-      title: string/rollinghash.hpp
+      path: myLibrary/rollinghash.hpp
+      title: myLibrary/rollinghash.hpp
   verificationCategories:
   - name: verify_tests/DST
     pages:
