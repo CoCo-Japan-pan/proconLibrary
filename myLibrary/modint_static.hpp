@@ -1,7 +1,7 @@
 #pragma once
 
 #include<bits/stdc++.h>
-#include "myLibrary/inner_math_modint.hpp"
+#include "myLibrary/innermath_modint.hpp"
 
 template <const int MOD>
 struct modint_static {
@@ -76,7 +76,7 @@ struct modint_static {
     // valueの逆元を求める
     constexpr modint_static inv() const noexcept {
         // 拡張ユークリッドの互除法
-        auto [gcd_value_mod, inv_value] = inv_gcd(value, MOD);
+        auto [gcd_value_mod, inv_value] = innermath_modint::inv_gcd(value, MOD);
         assert(gcd_value_mod == 1);
         return modint_static(inv_value);
     }

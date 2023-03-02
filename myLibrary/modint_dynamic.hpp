@@ -1,15 +1,15 @@
 #pragma once
 
 #include <bits/stdc++.h>
-#include "myLibrary/inner_math_modint.hpp"
+#include "myLibrary/innermath_modint.hpp"
 
 struct modint_dynamic {
     using ll = long long;
 
    private:
     ll value;
-    static barretReduction& get_bt(){
-        static barretReduction bt(998244353);
+    static innermath_modint::barretReduction &get_bt() {
+        static innermath_modint::barretReduction bt(998244353);
         return bt;
     }
 
@@ -19,7 +19,7 @@ struct modint_dynamic {
     }
     static void set_mod(int mod) noexcept {
         assert(1 <= mod);
-        get_bt() = barretReduction((uint)mod);
+        get_bt() = innermath_modint::barretReduction((uint)mod);
     }
     static int get_mod() noexcept { return (int)(get_bt().get_mod()); }
     ll val() const noexcept { return value; }
@@ -87,7 +87,8 @@ struct modint_dynamic {
     // valueの逆元を求める
     modint_dynamic inv() const noexcept {
         // 拡張ユークリッドの互除法
-        auto [gcd_value_mod, inv_value] = inv_gcd(value, get_mod());
+        auto [gcd_value_mod, inv_value] =
+            innermath_modint::inv_gcd(value, get_mod());
         assert(gcd_value_mod == 1);
         return modint_dynamic(inv_value);
     }
