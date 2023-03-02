@@ -70,7 +70,7 @@ struct rolhash {
 
    public:
     template <class T>
-    rolhash(const std::vector<T> &input) : base(genBase()), N(input.size()) {
+    explicit rolhash(const std::vector<T> &input) : base(genBase()), N(input.size()) {
         basebeki_table.resize(N + 1);
         basebeki_table[0] = 1;
         for (int i = 1; i <= N; i++) {
@@ -81,7 +81,7 @@ struct rolhash {
             front_table[i] = front_table[i - 1] * base + input[i - 1];
         }
     }
-    rolhash(const std::string &input_string)
+    explicit rolhash(const std::string &input_string)
         : rolhash(std::vector<char>(input_string.begin(), input_string.end())) {
     }
 

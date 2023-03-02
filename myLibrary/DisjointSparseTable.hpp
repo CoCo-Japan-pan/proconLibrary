@@ -9,7 +9,7 @@
 template <class T>
 struct DST {
    public:
-    DST(const std::vector<T> &vec, const std::function<T(T, T)> &op_)
+    explicit DST(const std::vector<T> &vec, const std::function<T(T, T)> &op_)
         : size(vec.size()), op(op_) {
         int depth = 1;
         while ((1 << depth) <= size) depth++;
