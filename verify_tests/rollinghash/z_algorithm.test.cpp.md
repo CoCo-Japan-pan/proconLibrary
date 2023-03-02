@@ -46,12 +46,12 @@ data:
     \ -= MOD;\n        return cur;\n    }\n};\n\n// \u90E8\u5206\u6587\u5B57\u5217\
     [l,r)\u306Ehash\u5024\u3092\u8FD4\u3059query\u3092\u5B9A\u6570\u6642\u9593\u3067\
     \nstruct rolhash {\n    using u64 = uint64_t;\n\n   public:\n    template <class\
-    \ T>\n    rolhash(const std::vector<T> &input) : base(genBase()), N(input.size())\
+    \ T>\n    explicit rolhash(const std::vector<T> &input) : base(genBase()), N(input.size())\
     \ {\n        basebeki_table.resize(N + 1);\n        basebeki_table[0] = 1;\n \
     \       for (int i = 1; i <= N; i++) {\n            basebeki_table[i] = basebeki_table[i\
     \ - 1] * base;\n        }\n        front_table.resize(N + 1);\n        for (int\
     \ i = 1; i <= N; i++) {\n            front_table[i] = front_table[i - 1] * base\
-    \ + input[i - 1];\n        }\n    }\n    rolhash(const std::string &input_string)\n\
+    \ + input[i - 1];\n        }\n    }\n    explicit rolhash(const std::string &input_string)\n\
     \        : rolhash(std::vector<char>(input_string.begin(), input_string.end()))\
     \ {\n    }\n\n    // \u90E8\u5206\u5217[l,r)\u306Ehash\u5024\u3092\u8FD4\u3059\
     \ l==r\u306E\u3068\u304D\u306F0\u3092\u8FD4\u3059\n    rolhash_mod query(int l,\
@@ -108,7 +108,7 @@ data:
   isVerificationFile: true
   path: verify_tests/rollinghash/z_algorithm.test.cpp
   requiredBy: []
-  timestamp: '2023-03-02 10:15:29+09:00'
+  timestamp: '2023-03-03 02:37:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify_tests/rollinghash/z_algorithm.test.cpp
