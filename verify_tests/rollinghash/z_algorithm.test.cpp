@@ -8,7 +8,7 @@
 #endif
 
 #include <bits/stdc++.h>
-#include "string/rollinghash.hpp"
+#include "myLibrary/rollinghash.hpp"
 using namespace std;
 using ll = long long;
 

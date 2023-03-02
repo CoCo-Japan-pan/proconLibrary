@@ -8,7 +8,7 @@
 #endif
 
 #include <bits/stdc++.h>
-#include "data_structure/DisjointSparseTable.hpp"
+#include "myLibrary/DisjointSparseTable.hpp"
 using namespace std;
 using ll = long long;
 

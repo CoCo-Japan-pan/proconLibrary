@@ -1,3 +1,4 @@
 .vscode/
 a.out
 submit.cpp
+.clang-format
