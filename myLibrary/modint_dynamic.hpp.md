@@ -78,21 +78,22 @@ data:
     \ {\n    using ll = long long;\n\n   private:\n    ll value;\n    static innermath_modint::barretReduction\
     \ &get_bt() {\n        static innermath_modint::barretReduction bt(1);\n     \
     \   return bt;\n    }\n\n   public:\n    modint_dynamic(ll x = 0) noexcept : value(x\
-    \ % get_mod()) {\n        if(value < 0) value += get_mod();\n    }\n    static\
-    \ void set_mod(int mod) noexcept {\n        assert(1 <= mod);\n        get_bt()\
-    \ = innermath_modint::barretReduction((uint)mod);\n    }\n    static int get_mod()\
-    \ noexcept { return (int)(get_bt().get_mod()); }\n    ll val() const noexcept\
-    \ { return value; }\n    modint_dynamic operator-() const noexcept {\n       \
-    \ return modint_dynamic(-value);\n    }\n    modint_dynamic& operator++() noexcept\
-    \ {\n        ++value;\n        if(value == get_mod()) value = 0;\n        return\
-    \ *this;\n    }\n    modint_dynamic& operator--() noexcept {\n        if(value\
-    \ == 0) value = get_mod();\n        --value;\n        return *this;\n    }\n \
-    \   modint_dynamic operator++(int) noexcept {\n        modint_dynamic cpy(*this);\n\
-    \        ++(*this);\n        return cpy;\n    }\n    modint_dynamic operator--(int)\
-    \ noexcept {\n        modint_dynamic cpy(*this);\n        --(*this);\n       \
-    \ return cpy;\n    }\n    modint_dynamic& operator+=(const modint_dynamic &rhs)\
-    \ noexcept {\n        value += rhs.value;\n        if(value >= get_mod()) value\
-    \ -= get_mod();\n        return *this;\n    }\n    modint_dynamic& operator-=(const\
+    \ % get_mod()) {\n        if(value < 0) value += get_mod();\n    }\n    // \u30B3\
+    \u30F3\u30B9\u30C8\u30E9\u30AF\u30BF\u306E\u524D\u306Bset_mod\u3092\u547C\u307C\
+    \u3046\n    static void set_mod(int mod) noexcept {\n        assert(1 <= mod);\n\
+    \        get_bt() = innermath_modint::barretReduction((uint)mod);\n    }\n   \
+    \ static int get_mod() noexcept { return (int)(get_bt().get_mod()); }\n    ll\
+    \ val() const noexcept { return value; }\n    modint_dynamic operator-() const\
+    \ noexcept {\n        return modint_dynamic(-value);\n    }\n    modint_dynamic&\
+    \ operator++() noexcept {\n        ++value;\n        if(value == get_mod()) value\
+    \ = 0;\n        return *this;\n    }\n    modint_dynamic& operator--() noexcept\
+    \ {\n        if(value == 0) value = get_mod();\n        --value;\n        return\
+    \ *this;\n    }\n    modint_dynamic operator++(int) noexcept {\n        modint_dynamic\
+    \ cpy(*this);\n        ++(*this);\n        return cpy;\n    }\n    modint_dynamic\
+    \ operator--(int) noexcept {\n        modint_dynamic cpy(*this);\n        --(*this);\n\
+    \        return cpy;\n    }\n    modint_dynamic& operator+=(const modint_dynamic\
+    \ &rhs) noexcept {\n        value += rhs.value;\n        if(value >= get_mod())\
+    \ value -= get_mod();\n        return *this;\n    }\n    modint_dynamic& operator-=(const\
     \ modint_dynamic &rhs) noexcept {\n        value += (get_mod() - rhs.value);\n\
     \        if(value >= get_mod()) value -= get_mod();\n        return *this;\n \
     \   }\n    modint_dynamic& operator*=(const modint_dynamic &rhs) noexcept {\n\
@@ -121,8 +122,9 @@ data:
     \ value;\n    static innermath_modint::barretReduction &get_bt() {\n        static\
     \ innermath_modint::barretReduction bt(1);\n        return bt;\n    }\n\n   public:\n\
     \    modint_dynamic(ll x = 0) noexcept : value(x % get_mod()) {\n        if(value\
-    \ < 0) value += get_mod();\n    }\n    static void set_mod(int mod) noexcept {\n\
-    \        assert(1 <= mod);\n        get_bt() = innermath_modint::barretReduction((uint)mod);\n\
+    \ < 0) value += get_mod();\n    }\n    // \u30B3\u30F3\u30B9\u30C8\u30E9\u30AF\
+    \u30BF\u306E\u524D\u306Bset_mod\u3092\u547C\u307C\u3046\n    static void set_mod(int\
+    \ mod) noexcept {\n        assert(1 <= mod);\n        get_bt() = innermath_modint::barretReduction((uint)mod);\n\
     \    }\n    static int get_mod() noexcept { return (int)(get_bt().get_mod());\
     \ }\n    ll val() const noexcept { return value; }\n    modint_dynamic operator-()\
     \ const noexcept {\n        return modint_dynamic(-value);\n    }\n    modint_dynamic&\
@@ -163,7 +165,7 @@ data:
   isVerificationFile: false
   path: myLibrary/modint_dynamic.hpp
   requiredBy: []
-  timestamp: '2023-03-03 11:39:06+09:00'
+  timestamp: '2023-03-03 11:48:13+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify_tests/modint_dynamic/modint_dynamic.test.cpp
