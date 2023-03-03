@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: myLibrary/innermath_modint.hpp
     title: myLibrary/innermath_modint.hpp
   _extendedRequiredBy: []

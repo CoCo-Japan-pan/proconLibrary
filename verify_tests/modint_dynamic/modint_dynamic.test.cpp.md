@@ -1,24 +1,24 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: myLibrary/innermath_modint.hpp
     title: myLibrary/innermath_modint.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: myLibrary/modint_dynamic.hpp
     title: myLibrary/modint_dynamic.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: = "https://yukicoder.me/problems/no/1092"
+    PROBLEM: https://yukicoder.me/problems/no/1092
     links:
     - https://yukicoder.me/problems/no/1092
   bundledCode: "#line 1 \"verify_tests/modint_dynamic/modint_dynamic.test.cpp\"\n\
-    #define PROBLEM = \"https://yukicoder.me/problems/no/1092\"\n// \u63D0\u51FA\u6642\
+    #define PROBLEM \"https://yukicoder.me/problems/no/1092\"\n// \u63D0\u51FA\u6642\
     \u306Bassert\u306F\u30AA\u30D5\n#ifndef DEBUG\n#ifndef NDEBUG\n#define NDEBUG\n\
     #endif\n#endif\n\n#include <bits/stdc++.h>\n#line 2 \"myLibrary/modint_dynamic.hpp\"\
     \n\n#line 2 \"myLibrary/innermath_modint.hpp\"\n\n#line 4 \"myLibrary/innermath_modint.hpp\"\
@@ -132,7 +132,7 @@ data:
     \ {\n            ans -= A[i];\n        } else if(S[i - 1] == '*') {\n        \
     \    ans *= A[i];\n        } else {\n            ans /= A[i];\n        }\n   \
     \ }\n    cout << ans.val() << \"\\n\";\n}\n"
-  code: "#define PROBLEM = \"https://yukicoder.me/problems/no/1092\"\n// \u63D0\u51FA\
+  code: "#define PROBLEM \"https://yukicoder.me/problems/no/1092\"\n// \u63D0\u51FA\
     \u6642\u306Bassert\u306F\u30AA\u30D5\n#ifndef DEBUG\n#ifndef NDEBUG\n#define NDEBUG\n\
     #endif\n#endif\n\n#include <bits/stdc++.h>\n#include \"myLibrary/modint_dynamic.hpp\"\
     \nusing namespace std;\nusing ll = long long;\n\n#define ALL(x) (x).begin(), (x).end()\n\
@@ -150,8 +150,8 @@ data:
   isVerificationFile: true
   path: verify_tests/modint_dynamic/modint_dynamic.test.cpp
   requiredBy: []
-  timestamp: '2023-03-03 12:21:53+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-03-03 12:26:01+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify_tests/modint_dynamic/modint_dynamic.test.cpp
 layout: document
