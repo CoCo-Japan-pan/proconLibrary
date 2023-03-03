@@ -80,7 +80,7 @@ data:
     \   return bt;\n    }\n\n   public:\n    modint_dynamic(ll x = 0) noexcept : value(x\
     \ % get_mod()) {\n        if(value < 0) value += get_mod();\n    }\n    // \u30B3\
     \u30F3\u30B9\u30C8\u30E9\u30AF\u30BF\u306E\u524D\u306Bset_mod\u3092\u547C\u307C\
-    \u3046\n    static void set_mod(int mod) noexcept {\n        assert(1 <= mod);\n\
+    \u3046!\n    static void set_mod(int mod) noexcept {\n        assert(1 <= mod);\n\
     \        get_bt() = innermath_modint::barretReduction((uint)mod);\n    }\n   \
     \ static int get_mod() noexcept { return (int)(get_bt().get_mod()); }\n    ll\
     \ val() const noexcept { return value; }\n    modint_dynamic operator-() const\
@@ -123,7 +123,7 @@ data:
     \ innermath_modint::barretReduction bt(1);\n        return bt;\n    }\n\n   public:\n\
     \    modint_dynamic(ll x = 0) noexcept : value(x % get_mod()) {\n        if(value\
     \ < 0) value += get_mod();\n    }\n    // \u30B3\u30F3\u30B9\u30C8\u30E9\u30AF\
-    \u30BF\u306E\u524D\u306Bset_mod\u3092\u547C\u307C\u3046\n    static void set_mod(int\
+    \u30BF\u306E\u524D\u306Bset_mod\u3092\u547C\u307C\u3046!\n    static void set_mod(int\
     \ mod) noexcept {\n        assert(1 <= mod);\n        get_bt() = innermath_modint::barretReduction((uint)mod);\n\
     \    }\n    static int get_mod() noexcept { return (int)(get_bt().get_mod());\
     \ }\n    ll val() const noexcept { return value; }\n    modint_dynamic operator-()\
@@ -165,7 +165,7 @@ data:
   isVerificationFile: false
   path: myLibrary/modint_dynamic.hpp
   requiredBy: []
-  timestamp: '2023-03-03 11:48:13+09:00'
+  timestamp: '2023-03-03 11:52:02+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify_tests/modint_dynamic/modint_dynamic.test.cpp
