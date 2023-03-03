@@ -6,13 +6,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: myLibrary/DisjointSparseTable.hpp
       title: Disjoint Sparse Table
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: myLibrary/innermath_modint.hpp
       title: myLibrary/innermath_modint.hpp
     - icon: ':heavy_check_mark:'
       path: myLibrary/modint_dynamic.hpp
       title: myLibrary/modint_dynamic.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: myLibrary/modint_static.hpp
       title: myLibrary/modint_static.hpp
     - icon: ':heavy_check_mark:'
@@ -29,6 +29,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify_tests/modint_dynamic/modint_dynamic.test.cpp
       title: verify_tests/modint_dynamic/modint_dynamic.test.cpp
+  - name: verify_tests/modint_static
+    pages:
+    - icon: ':x:'
+      path: verify_tests/modint_static/modint_static.test.cpp
+      title: verify_tests/modint_static/modint_static.test.cpp
   - name: verify_tests/rollinghash
     pages:
     - icon: ':heavy_check_mark:'

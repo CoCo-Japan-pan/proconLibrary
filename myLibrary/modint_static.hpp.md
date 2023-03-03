@@ -1,14 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: myLibrary/innermath_modint.hpp
     title: myLibrary/innermath_modint.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: verify_tests/modint_static/modint_static.test.cpp
+    title: verify_tests/modint_static/modint_static.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"myLibrary/modint_static.hpp\"\n\n#include<bits/stdc++.h>\n\
@@ -158,8 +161,9 @@ data:
   path: myLibrary/modint_static.hpp
   requiredBy: []
   timestamp: '2023-03-03 11:39:06+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - verify_tests/modint_static/modint_static.test.cpp
 documentation_of: myLibrary/modint_static.hpp
 layout: document
 redirect_from:

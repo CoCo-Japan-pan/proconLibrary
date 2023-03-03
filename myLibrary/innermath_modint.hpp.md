@@ -5,16 +5,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: myLibrary/modint_dynamic.hpp
     title: myLibrary/modint_dynamic.hpp
-  - icon: ':warning:'
+  - icon: ':x:'
     path: myLibrary/modint_static.hpp
     title: myLibrary/modint_static.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify_tests/modint_dynamic/modint_dynamic.test.cpp
     title: verify_tests/modint_dynamic/modint_dynamic.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: verify_tests/modint_static/modint_static.test.cpp
+    title: verify_tests/modint_static/modint_static.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"myLibrary/innermath_modint.hpp\"\n\n#include <bits/stdc++.h>\n\
@@ -144,9 +147,10 @@ data:
   - myLibrary/modint_static.hpp
   - myLibrary/modint_dynamic.hpp
   timestamp: '2023-03-03 11:39:06+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify_tests/modint_dynamic/modint_dynamic.test.cpp
+  - verify_tests/modint_static/modint_static.test.cpp
 documentation_of: myLibrary/innermath_modint.hpp
 layout: document
 redirect_from:
