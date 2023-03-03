@@ -17,7 +17,7 @@ struct modint_dynamic {
     modint_dynamic(ll x = 0) noexcept : value(x % get_mod()) {
         if(value < 0) value += get_mod();
     }
-    // コンストラクタの前にset_modを呼ぼう
+    // コンストラクタの前にset_modを呼ぼう!
     static void set_mod(int mod) noexcept {
         assert(1 <= mod);
         get_bt() = innermath_modint::barretReduction((uint)mod);
