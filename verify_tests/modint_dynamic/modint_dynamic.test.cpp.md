@@ -127,12 +127,11 @@ data:
     template <class T> using vec = vector<T>;\n\nint main() {\n    ios_base::sync_with_stdio(false);\n\
     \    cin.tie(nullptr);\n    int P, N;\n    cin >> P >> N;\n    vec<int> A(N);\n\
     \    for(int &a : A) cin >> a;\n    string S;\n    cin >> S;\n    modint_dynamic::set_mod(P);\n\
-    \    // cout << modint_dynamic::get_mod() << \"\\n\";\n    modint_dynamic ans(A[0]);\n\
-    \    for(int i = 1; i < N; i++){\n        if(S[i - 1] == '+') {\n            ans\
-    \ += A[i];\n        } else if(S[i - 1] == '-') {\n            ans -= A[i];\n \
-    \       } else if(S[i - 1] == '*') {\n            ans *= A[i];\n        } else\
-    \ {\n            ans /= A[i];\n        }\n    }\n    cout << ans.val() << \"\\\
-    n\";\n}\n"
+    \    modint_dynamic ans(A[0]);\n    for(int i = 1; i < N; i++){\n        if(S[i\
+    \ - 1] == '+') {\n            ans += A[i];\n        } else if(S[i - 1] == '-')\
+    \ {\n            ans -= A[i];\n        } else if(S[i - 1] == '*') {\n        \
+    \    ans *= A[i];\n        } else {\n            ans /= A[i];\n        }\n   \
+    \ }\n    cout << ans.val() << \"\\n\";\n}\n"
   code: "#define PROBLEM = \"https://yukicoder.me/problems/no/1092\"\n// \u63D0\u51FA\
     \u6642\u306Bassert\u306F\u30AA\u30D5\n#ifndef DEBUG\n#ifndef NDEBUG\n#define NDEBUG\n\
     #endif\n#endif\n\n#include <bits/stdc++.h>\n#include \"myLibrary/modint_dynamic.hpp\"\
@@ -140,19 +139,18 @@ data:
     template <class T> using vec = vector<T>;\n\nint main() {\n    ios_base::sync_with_stdio(false);\n\
     \    cin.tie(nullptr);\n    int P, N;\n    cin >> P >> N;\n    vec<int> A(N);\n\
     \    for(int &a : A) cin >> a;\n    string S;\n    cin >> S;\n    modint_dynamic::set_mod(P);\n\
-    \    // cout << modint_dynamic::get_mod() << \"\\n\";\n    modint_dynamic ans(A[0]);\n\
-    \    for(int i = 1; i < N; i++){\n        if(S[i - 1] == '+') {\n            ans\
-    \ += A[i];\n        } else if(S[i - 1] == '-') {\n            ans -= A[i];\n \
-    \       } else if(S[i - 1] == '*') {\n            ans *= A[i];\n        } else\
-    \ {\n            ans /= A[i];\n        }\n    }\n    cout << ans.val() << \"\\\
-    n\";\n}"
+    \    modint_dynamic ans(A[0]);\n    for(int i = 1; i < N; i++){\n        if(S[i\
+    \ - 1] == '+') {\n            ans += A[i];\n        } else if(S[i - 1] == '-')\
+    \ {\n            ans -= A[i];\n        } else if(S[i - 1] == '*') {\n        \
+    \    ans *= A[i];\n        } else {\n            ans /= A[i];\n        }\n   \
+    \ }\n    cout << ans.val() << \"\\n\";\n}"
   dependsOn:
   - myLibrary/modint_dynamic.hpp
   - myLibrary/innermath_modint.hpp
   isVerificationFile: true
   path: verify_tests/modint_dynamic/modint_dynamic.test.cpp
   requiredBy: []
-  timestamp: '2023-03-03 11:52:02+09:00'
+  timestamp: '2023-03-03 12:21:53+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify_tests/modint_dynamic/modint_dynamic.test.cpp
