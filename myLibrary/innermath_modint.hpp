@@ -106,16 +106,16 @@ namespace innermath_modint{
             z *= b;
 #ifdef _MSC_VER
             ull x;
-            _umul128(z, im, &x)
+            _umul128(z, imod, &x)
 #else
             // x = z / mod またはその +1
             // 割り算をビットシフトにすることで高速化
             ull x = (ull)(((u128)z * imod) >> 64);
 #endif
-                // z - x * mod = z % mod - mod の場合、uintなので 2^32 - (mod -
-                // z % mod) つまりmodを足せば 2^32 + z %
-                // modとなり、求めるmodになる
-                uint v = (uint)(z - x * mod);
+            // z - x * mod = z % mod - mod の場合、uintなので 2^32 - (mod -
+            // z % mod) つまりmodを足せば 2^32 + z %
+            // modとなり、求めるmodになる
+            uint v = (uint)(z - x * mod);
             if (v >= mod) v += mod;
             return v;
         }

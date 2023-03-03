@@ -9,12 +9,12 @@ struct modint_dynamic {
    private:
     ll value;
     static innermath_modint::barretReduction &get_bt() {
-        static innermath_modint::barretReduction bt(998244353);
+        static innermath_modint::barretReduction bt(1);
         return bt;
     }
 
    public:
-    modint_dynamic(ll x = 0) noexcept : value(x & get_mod()) {
+    modint_dynamic(ll x = 0) noexcept : value(x % get_mod()) {
         if(value < 0) value += get_mod();
     }
     static void set_mod(int mod) noexcept {
