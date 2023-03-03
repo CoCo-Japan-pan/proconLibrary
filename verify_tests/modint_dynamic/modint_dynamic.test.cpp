@@ -24,7 +24,6 @@ int main() {
     string S;
     cin >> S;
     modint_dynamic::set_mod(P);
-    // cout << modint_dynamic::get_mod() << "\n";
     modint_dynamic ans(A[0]);
     for(int i = 1; i < N; i++){
         if(S[i - 1] == '+') {
