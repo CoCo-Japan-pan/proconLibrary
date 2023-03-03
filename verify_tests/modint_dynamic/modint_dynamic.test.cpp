@@ -1,4 +1,4 @@
-#define PROBLEM = "https://yukicoder.me/problems/no/1092"
+#define PROBLEM "https://yukicoder.me/problems/no/1092"
 // 提出時にassertはオフ
 #ifndef DEBUG
 #ifndef NDEBUG
