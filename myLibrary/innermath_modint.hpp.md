@@ -2,16 +2,19 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':x:'
     path: myLibrary/modint_dynamic.hpp
     title: myLibrary/modint_dynamic.hpp
   - icon: ':warning:'
     path: myLibrary/modint_static.hpp
     title: myLibrary/modint_static.hpp
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: verify_tests/modint_dynamic/modint_dynamic.test.cpp
+    title: verify_tests/modint_dynamic/modint_dynamic.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"myLibrary/innermath_modint.hpp\"\n\n#include <bits/stdc++.h>\n\
@@ -63,17 +66,17 @@ data:
     \     imod((ull)(-1) / mod + 1) {}  // unsigned\u306E\u5834\u5408\u3001\u8CA0\u3067\
     \u5DE1\u56DE\u3059\u308B\n\n        uint get_mod() const { return mod; }\n\n \
     \       uint mul(int a, int b) const {\n            ull z = a;\n            z\
-    \ *= b;\n#ifdef _MSC_VER\n            ull x;\n            _umul128(z, im, &x)\n\
+    \ *= b;\n#ifdef _MSC_VER\n            ull x;\n            _umul128(z, imod, &x)\n\
     #else\n            // x = z / mod \u307E\u305F\u306F\u305D\u306E +1\n        \
     \    // \u5272\u308A\u7B97\u3092\u30D3\u30C3\u30C8\u30B7\u30D5\u30C8\u306B\u3059\
     \u308B\u3053\u3068\u3067\u9AD8\u901F\u5316\n            ull x = (ull)(((u128)z\
-    \ * imod) >> 64);\n#endif\n                // z - x * mod = z % mod - mod \u306E\
-    \u5834\u5408\u3001uint\u306A\u306E\u3067 2^32 - (mod -\n                // z %\
-    \ mod) \u3064\u307E\u308Amod\u3092\u8DB3\u305B\u3070 2^32 + z %\n            \
-    \    // mod\u3068\u306A\u308A\u3001\u6C42\u3081\u308Bmod\u306B\u306A\u308B\n \
-    \               uint v = (uint)(z - x * mod);\n            if (v >= mod) v +=\
-    \ mod;\n            return v;\n        }\n\n       private:\n        uint mod;\n\
-    \        ull imod;  // ceil(2^64 / mod)\n    };\n}\n"
+    \ * imod) >> 64);\n#endif\n            // z - x * mod = z % mod - mod \u306E\u5834\
+    \u5408\u3001uint\u306A\u306E\u3067 2^32 - (mod -\n            // z % mod) \u3064\
+    \u307E\u308Amod\u3092\u8DB3\u305B\u3070 2^32 + z %\n            // mod\u3068\u306A\
+    \u308A\u3001\u6C42\u3081\u308Bmod\u306B\u306A\u308B\n            uint v = (uint)(z\
+    \ - x * mod);\n            if (v >= mod) v += mod;\n            return v;\n  \
+    \      }\n\n       private:\n        uint mod;\n        ull imod;  // ceil(2^64\
+    \ / mod)\n    };\n}\n"
   code: "#pragma once\n\n#include <bits/stdc++.h>\n\n#ifdef _MSC_VER\n#include <intrin.h>\n\
     #endif\n\nnamespace innermath_modint{\n    using ll = long long;\n    using ull\
     \ = unsigned long long;\n    using u128 = __uint128_t;\n\n    // x\u306Emod\u3092\
@@ -123,14 +126,14 @@ data:
     \  // unsigned\u306E\u5834\u5408\u3001\u8CA0\u3067\u5DE1\u56DE\u3059\u308B\n\n\
     \        uint get_mod() const { return mod; }\n\n        uint mul(int a, int b)\
     \ const {\n            ull z = a;\n            z *= b;\n#ifdef _MSC_VER\n    \
-    \        ull x;\n            _umul128(z, im, &x)\n#else\n            // x = z\
-    \ / mod \u307E\u305F\u306F\u305D\u306E +1\n            // \u5272\u308A\u7B97\u3092\
-    \u30D3\u30C3\u30C8\u30B7\u30D5\u30C8\u306B\u3059\u308B\u3053\u3068\u3067\u9AD8\
-    \u901F\u5316\n            ull x = (ull)(((u128)z * imod) >> 64);\n#endif\n   \
-    \             // z - x * mod = z % mod - mod \u306E\u5834\u5408\u3001uint\u306A\
-    \u306E\u3067 2^32 - (mod -\n                // z % mod) \u3064\u307E\u308Amod\u3092\
-    \u8DB3\u305B\u3070 2^32 + z %\n                // mod\u3068\u306A\u308A\u3001\u6C42\
-    \u3081\u308Bmod\u306B\u306A\u308B\n                uint v = (uint)(z - x * mod);\n\
+    \        ull x;\n            _umul128(z, imod, &x)\n#else\n            // x =\
+    \ z / mod \u307E\u305F\u306F\u305D\u306E +1\n            // \u5272\u308A\u7B97\
+    \u3092\u30D3\u30C3\u30C8\u30B7\u30D5\u30C8\u306B\u3059\u308B\u3053\u3068\u3067\
+    \u9AD8\u901F\u5316\n            ull x = (ull)(((u128)z * imod) >> 64);\n#endif\n\
+    \            // z - x * mod = z % mod - mod \u306E\u5834\u5408\u3001uint\u306A\
+    \u306E\u3067 2^32 - (mod -\n            // z % mod) \u3064\u307E\u308Amod\u3092\
+    \u8DB3\u305B\u3070 2^32 + z %\n            // mod\u3068\u306A\u308A\u3001\u6C42\
+    \u3081\u308Bmod\u306B\u306A\u308B\n            uint v = (uint)(z - x * mod);\n\
     \            if (v >= mod) v += mod;\n            return v;\n        }\n\n   \
     \    private:\n        uint mod;\n        ull imod;  // ceil(2^64 / mod)\n   \
     \ };\n}"
@@ -140,9 +143,10 @@ data:
   requiredBy:
   - myLibrary/modint_static.hpp
   - myLibrary/modint_dynamic.hpp
-  timestamp: '2023-03-03 03:13:54+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2023-03-03 11:39:06+09:00'
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - verify_tests/modint_dynamic/modint_dynamic.test.cpp
 documentation_of: myLibrary/innermath_modint.hpp
 layout: document
 redirect_from:

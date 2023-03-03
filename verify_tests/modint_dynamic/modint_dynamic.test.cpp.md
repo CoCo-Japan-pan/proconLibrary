@@ -4,18 +4,24 @@ data:
   - icon: ':x:'
     path: myLibrary/innermath_modint.hpp
     title: myLibrary/innermath_modint.hpp
-  _extendedRequiredBy: []
-  _extendedVerifiedWith:
   - icon: ':x:'
-    path: verify_tests/modint_dynamic/modint_dynamic.test.cpp
-    title: verify_tests/modint_dynamic/modint_dynamic.test.cpp
+    path: myLibrary/modint_dynamic.hpp
+    title: myLibrary/modint_dynamic.hpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: true
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"myLibrary/modint_dynamic.hpp\"\n\n#include <bits/stdc++.h>\n\
-    #line 2 \"myLibrary/innermath_modint.hpp\"\n\n#line 4 \"myLibrary/innermath_modint.hpp\"\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: = "https://yukicoder.me/problems/no/1092"
+    links:
+    - https://yukicoder.me/problems/no/1092
+  bundledCode: "#line 1 \"verify_tests/modint_dynamic/modint_dynamic.test.cpp\"\n\
+    #define PROBLEM = \"https://yukicoder.me/problems/no/1092\"\n// \u63D0\u51FA\u6642\
+    \u306Bassert\u306F\u30AA\u30D5\n#ifndef DEBUG\n#ifndef NDEBUG\n#define NDEBUG\n\
+    #endif\n#endif\n\n#include <bits/stdc++.h>\n#line 2 \"myLibrary/modint_dynamic.hpp\"\
+    \n\n#line 2 \"myLibrary/innermath_modint.hpp\"\n\n#line 4 \"myLibrary/innermath_modint.hpp\"\
     \n\n#ifdef _MSC_VER\n#include <intrin.h>\n#endif\n\nnamespace innermath_modint{\n\
     \    using ll = long long;\n    using ull = unsigned long long;\n    using u128\
     \ = __uint128_t;\n\n    // x\u306Emod\u3092[0, mod)\u3067\u8FD4\u3059\n    constexpr\
@@ -115,62 +121,43 @@ data:
     \    }\n    modint_dynamic& operator/=(const modint_dynamic &rhs) noexcept {\n\
     \        return (*this) *= rhs.inv();\n    }\n    modint_dynamic operator/(const\
     \ modint_dynamic &rhs) const noexcept {\n        modint_dynamic cpy(*this);\n\
-    \        return cpy /= rhs;\n    }\n};\n"
-  code: "#pragma once\n\n#include <bits/stdc++.h>\n#include \"myLibrary/innermath_modint.hpp\"\
-    \n\nstruct modint_dynamic {\n    using ll = long long;\n\n   private:\n    ll\
-    \ value;\n    static innermath_modint::barretReduction &get_bt() {\n        static\
-    \ innermath_modint::barretReduction bt(1);\n        return bt;\n    }\n\n   public:\n\
-    \    modint_dynamic(ll x = 0) noexcept : value(x % get_mod()) {\n        if(value\
-    \ < 0) value += get_mod();\n    }\n    static void set_mod(int mod) noexcept {\n\
-    \        assert(1 <= mod);\n        get_bt() = innermath_modint::barretReduction((uint)mod);\n\
-    \    }\n    static int get_mod() noexcept { return (int)(get_bt().get_mod());\
-    \ }\n    ll val() const noexcept { return value; }\n    modint_dynamic operator-()\
-    \ const noexcept {\n        return modint_dynamic(-value);\n    }\n    modint_dynamic&\
-    \ operator++() noexcept {\n        ++value;\n        if(value == get_mod()) value\
-    \ = 0;\n        return *this;\n    }\n    modint_dynamic& operator--() noexcept\
-    \ {\n        if(value == 0) value = get_mod();\n        --value;\n        return\
-    \ *this;\n    }\n    modint_dynamic operator++(int) noexcept {\n        modint_dynamic\
-    \ cpy(*this);\n        ++(*this);\n        return cpy;\n    }\n    modint_dynamic\
-    \ operator--(int) noexcept {\n        modint_dynamic cpy(*this);\n        --(*this);\n\
-    \        return cpy;\n    }\n    modint_dynamic& operator+=(const modint_dynamic\
-    \ &rhs) noexcept {\n        value += rhs.value;\n        if(value >= get_mod())\
-    \ value -= get_mod();\n        return *this;\n    }\n    modint_dynamic& operator-=(const\
-    \ modint_dynamic &rhs) noexcept {\n        value += (get_mod() - rhs.value);\n\
-    \        if(value >= get_mod()) value -= get_mod();\n        return *this;\n \
-    \   }\n    modint_dynamic& operator*=(const modint_dynamic &rhs) noexcept {\n\
-    \        // barret reduction \u3067\u30B3\u30F3\u30D1\u30A4\u30E9\u306E\u4EE3\u308F\
-    \u308A\u306B\u5B9A\u6570\u500D\u9AD8\u901F\u5316\n        value = get_bt().mul(value,\
-    \ rhs.value);\n        return *this;\n    }\n    modint_dynamic operator+(const\
-    \ modint_dynamic &rhs) const noexcept {\n        modint_dynamic cpy(*this);\n\
-    \        return cpy += rhs;\n    }\n    modint_dynamic operator-(const modint_dynamic\
-    \ &rhs) const noexcept {\n        modint_dynamic cpy(*this);\n        return cpy\
-    \ -= rhs;\n    }\n    modint_dynamic operator*(const modint_dynamic &rhs) const\
-    \ noexcept {\n        modint_dynamic cpy(*this);\n        return cpy *= rhs;\n\
-    \    }\n    modint_dynamic pow(ll beki) {\n        modint_dynamic curbekimod(*this);\n\
-    \        modint_dynamic ret(1);\n        while(beki > 0) {\n            if(beki\
-    \ & 1) ret *= curbekimod;\n            curbekimod *= curbekimod;\n           \
-    \ beki >>= 1;\n        }\n        return ret;\n    }\n\n    // value\u306E\u9006\
-    \u5143\u3092\u6C42\u3081\u308B\n    modint_dynamic inv() const noexcept {\n  \
-    \      // \u62E1\u5F35\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5\
-    \n        auto [gcd_value_mod, inv_value] =\n            innermath_modint::inv_gcd(value,\
-    \ get_mod());\n        assert(gcd_value_mod == 1);\n        return modint_dynamic(inv_value);\n\
-    \    }\n    modint_dynamic& operator/=(const modint_dynamic &rhs) noexcept {\n\
-    \        return (*this) *= rhs.inv();\n    }\n    modint_dynamic operator/(const\
-    \ modint_dynamic &rhs) const noexcept {\n        modint_dynamic cpy(*this);\n\
-    \        return cpy /= rhs;\n    }\n};"
+    \        return cpy /= rhs;\n    }\n};\n#line 11 \"verify_tests/modint_dynamic/modint_dynamic.test.cpp\"\
+    \nusing namespace std;\nusing ll = long long;\n\n#define ALL(x) (x).begin(), (x).end()\n\
+    template <class T> using vec = vector<T>;\n\nint main() {\n    ios_base::sync_with_stdio(false);\n\
+    \    cin.tie(nullptr);\n    int P, N;\n    cin >> P >> N;\n    vec<int> A(N);\n\
+    \    for(int &a : A) cin >> a;\n    string S;\n    cin >> S;\n    modint_dynamic::set_mod(P);\n\
+    \    // cout << modint_dynamic::get_mod() << \"\\n\";\n    modint_dynamic ans(A[0]);\n\
+    \    for(int i = 1; i < N; i++){\n        if(S[i - 1] == '+') {\n            ans\
+    \ += A[i];\n        } else if(S[i - 1] == '-') {\n            ans -= A[i];\n \
+    \       } else if(S[i - 1] == '*') {\n            ans *= A[i];\n        } else\
+    \ {\n            ans /= A[i];\n        }\n    }\n    cout << ans.val() << \"\\\
+    n\";\n}\n"
+  code: "#define PROBLEM = \"https://yukicoder.me/problems/no/1092\"\n// \u63D0\u51FA\
+    \u6642\u306Bassert\u306F\u30AA\u30D5\n#ifndef DEBUG\n#ifndef NDEBUG\n#define NDEBUG\n\
+    #endif\n#endif\n\n#include <bits/stdc++.h>\n#include \"myLibrary/modint_dynamic.hpp\"\
+    \nusing namespace std;\nusing ll = long long;\n\n#define ALL(x) (x).begin(), (x).end()\n\
+    template <class T> using vec = vector<T>;\n\nint main() {\n    ios_base::sync_with_stdio(false);\n\
+    \    cin.tie(nullptr);\n    int P, N;\n    cin >> P >> N;\n    vec<int> A(N);\n\
+    \    for(int &a : A) cin >> a;\n    string S;\n    cin >> S;\n    modint_dynamic::set_mod(P);\n\
+    \    // cout << modint_dynamic::get_mod() << \"\\n\";\n    modint_dynamic ans(A[0]);\n\
+    \    for(int i = 1; i < N; i++){\n        if(S[i - 1] == '+') {\n            ans\
+    \ += A[i];\n        } else if(S[i - 1] == '-') {\n            ans -= A[i];\n \
+    \       } else if(S[i - 1] == '*') {\n            ans *= A[i];\n        } else\
+    \ {\n            ans /= A[i];\n        }\n    }\n    cout << ans.val() << \"\\\
+    n\";\n}"
   dependsOn:
+  - myLibrary/modint_dynamic.hpp
   - myLibrary/innermath_modint.hpp
-  isVerificationFile: false
-  path: myLibrary/modint_dynamic.hpp
+  isVerificationFile: true
+  path: verify_tests/modint_dynamic/modint_dynamic.test.cpp
   requiredBy: []
   timestamp: '2023-03-03 11:39:06+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - verify_tests/modint_dynamic/modint_dynamic.test.cpp
-documentation_of: myLibrary/modint_dynamic.hpp
+  verificationStatus: TEST_WRONG_ANSWER
+  verifiedWith: []
+documentation_of: verify_tests/modint_dynamic/modint_dynamic.test.cpp
 layout: document
 redirect_from:
-- /library/myLibrary/modint_dynamic.hpp
-- /library/myLibrary/modint_dynamic.hpp.html
-title: myLibrary/modint_dynamic.hpp
+- /verify/verify_tests/modint_dynamic/modint_dynamic.test.cpp
+- /verify/verify_tests/modint_dynamic/modint_dynamic.test.cpp.html
+title: verify_tests/modint_dynamic/modint_dynamic.test.cpp
 ---

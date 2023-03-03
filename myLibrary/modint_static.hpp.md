@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':x:'
     path: myLibrary/innermath_modint.hpp
     title: myLibrary/innermath_modint.hpp
   _extendedRequiredBy: []
@@ -61,57 +61,56 @@ data:
     \     imod((ull)(-1) / mod + 1) {}  // unsigned\u306E\u5834\u5408\u3001\u8CA0\u3067\
     \u5DE1\u56DE\u3059\u308B\n\n        uint get_mod() const { return mod; }\n\n \
     \       uint mul(int a, int b) const {\n            ull z = a;\n            z\
-    \ *= b;\n#ifdef _MSC_VER\n            ull x;\n            _umul128(z, im, &x)\n\
+    \ *= b;\n#ifdef _MSC_VER\n            ull x;\n            _umul128(z, imod, &x)\n\
     #else\n            // x = z / mod \u307E\u305F\u306F\u305D\u306E +1\n        \
     \    // \u5272\u308A\u7B97\u3092\u30D3\u30C3\u30C8\u30B7\u30D5\u30C8\u306B\u3059\
     \u308B\u3053\u3068\u3067\u9AD8\u901F\u5316\n            ull x = (ull)(((u128)z\
-    \ * imod) >> 64);\n#endif\n                // z - x * mod = z % mod - mod \u306E\
-    \u5834\u5408\u3001uint\u306A\u306E\u3067 2^32 - (mod -\n                // z %\
-    \ mod) \u3064\u307E\u308Amod\u3092\u8DB3\u305B\u3070 2^32 + z %\n            \
-    \    // mod\u3068\u306A\u308A\u3001\u6C42\u3081\u308Bmod\u306B\u306A\u308B\n \
-    \               uint v = (uint)(z - x * mod);\n            if (v >= mod) v +=\
-    \ mod;\n            return v;\n        }\n\n       private:\n        uint mod;\n\
-    \        ull imod;  // ceil(2^64 / mod)\n    };\n}\n#line 5 \"myLibrary/modint_static.hpp\"\
-    \n\ntemplate <const int MOD>\nstruct modint_static {\n    using ll = long long;\n\
-    \n   public:\n    constexpr modint_static(ll x = 0) noexcept : value(x % MOD)\
-    \ {\n        if (value < 0) value += MOD;\n    }\n    constexpr int get_mod()\
-    \ const noexcept { return MOD; }\n    constexpr ll val() const noexcept { return\
-    \ value; }\n    constexpr modint_static operator-() const noexcept {\n       \
-    \ return modint_static(-value);\n    }\n    constexpr modint_static& operator++()\
-    \ noexcept {\n        ++value;\n        if(value == MOD) value = 0;\n        return\
-    \ *this;\n    }\n    constexpr modint_static& operator--() noexcept {\n      \
-    \  if(value == 0) value = MOD;\n        --value;\n        return *this;\n    }\n\
-    \    constexpr modint_static operator++(int) noexcept {\n        modint_static\
-    \ cpy(*this);\n        ++(*this);\n        return cpy;\n    }\n    constexpr modint_static\
-    \ operator--(int) noexcept {\n        modint_static cpy(*this);\n        --(*this);\n\
-    \        return cpy;\n    }\n    constexpr modint_static& operator+=(const modint_static&\
-    \ rhs) noexcept {\n        value += rhs.value;\n        if (value >= MOD) value\
-    \ -= MOD;\n        return *this;\n    }\n    constexpr modint_static& operator-=(const\
-    \ modint_static& rhs) noexcept {\n        value += (MOD - rhs.value);\n      \
-    \  if (value >= MOD) value -= MOD;\n        return *this;\n    }\n    constexpr\
-    \ modint_static& operator*=(const modint_static& rhs) noexcept {\n        (value\
-    \ *= rhs.value) %= MOD; // \u5B9A\u6570\u3060\u3068\u30B3\u30F3\u30D1\u30A4\u30E9\
-    \u6700\u9069\u5316\u304C\u304B\u304B\u308B\n        return *this;\n    }\n   \
-    \ constexpr modint_static operator+(const modint_static& rhs) const noexcept {\n\
-    \        modint_static cpy(*this);\n        return cpy += rhs;\n    }\n    constexpr\
-    \ modint_static operator-(const modint_static& rhs) const noexcept {\n       \
-    \ modint_static cpy(*this);\n        return cpy -= rhs;\n    }\n    constexpr\
-    \ modint_static operator*(const modint_static& rhs) const noexcept {\n       \
-    \ modint_static cpy(*this);\n        return cpy *= rhs;\n    }\n    constexpr\
-    \ modint_static pow(ll beki) const noexcept {\n        modint_static curbekimod(*this);\n\
-    \        modint_static ret(1);\n        while (beki > 0) {\n            if (beki\
-    \ & 1) ret *= curbekimod;\n            curbekimod *= curbekimod;\n           \
-    \ beki >>= 1;\n        }\n        return ret;\n    }\n\n    // value\u306E\u9006\
-    \u5143\u3092\u6C42\u3081\u308B\n    constexpr modint_static inv() const noexcept\
-    \ {\n        // \u62E1\u5F35\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\
-    \u6CD5\n        auto [gcd_value_mod, inv_value] = innermath_modint::inv_gcd(value,\
-    \ MOD);\n        assert(gcd_value_mod == 1);\n        return modint_static(inv_value);\n\
-    \    }\n    constexpr modint_static& operator/=(const modint_static& rhs) noexcept\
-    \ {\n        return (*this) *= rhs.inv();\n    }\n    constexpr modint_static\
-    \ operator/(const modint_static& rhs) const noexcept {\n        modint_static\
-    \ cpy(*this);\n        return cpy /= rhs;\n    }\n\n   private:\n    ll value;\n\
-    };\n\nusing mint998244353 = modint_static<998244353>;\nusing mint1000000007 =\
-    \ modint_static<1000000007>;\n"
+    \ * imod) >> 64);\n#endif\n            // z - x * mod = z % mod - mod \u306E\u5834\
+    \u5408\u3001uint\u306A\u306E\u3067 2^32 - (mod -\n            // z % mod) \u3064\
+    \u307E\u308Amod\u3092\u8DB3\u305B\u3070 2^32 + z %\n            // mod\u3068\u306A\
+    \u308A\u3001\u6C42\u3081\u308Bmod\u306B\u306A\u308B\n            uint v = (uint)(z\
+    \ - x * mod);\n            if (v >= mod) v += mod;\n            return v;\n  \
+    \      }\n\n       private:\n        uint mod;\n        ull imod;  // ceil(2^64\
+    \ / mod)\n    };\n}\n#line 5 \"myLibrary/modint_static.hpp\"\n\ntemplate <const\
+    \ int MOD>\nstruct modint_static {\n    using ll = long long;\n\n   public:\n\
+    \    constexpr modint_static(ll x = 0) noexcept : value(x % MOD) {\n        if\
+    \ (value < 0) value += MOD;\n    }\n    constexpr int get_mod() const noexcept\
+    \ { return MOD; }\n    constexpr ll val() const noexcept { return value; }\n \
+    \   constexpr modint_static operator-() const noexcept {\n        return modint_static(-value);\n\
+    \    }\n    constexpr modint_static& operator++() noexcept {\n        ++value;\n\
+    \        if(value == MOD) value = 0;\n        return *this;\n    }\n    constexpr\
+    \ modint_static& operator--() noexcept {\n        if(value == 0) value = MOD;\n\
+    \        --value;\n        return *this;\n    }\n    constexpr modint_static operator++(int)\
+    \ noexcept {\n        modint_static cpy(*this);\n        ++(*this);\n        return\
+    \ cpy;\n    }\n    constexpr modint_static operator--(int) noexcept {\n      \
+    \  modint_static cpy(*this);\n        --(*this);\n        return cpy;\n    }\n\
+    \    constexpr modint_static& operator+=(const modint_static& rhs) noexcept {\n\
+    \        value += rhs.value;\n        if (value >= MOD) value -= MOD;\n      \
+    \  return *this;\n    }\n    constexpr modint_static& operator-=(const modint_static&\
+    \ rhs) noexcept {\n        value += (MOD - rhs.value);\n        if (value >= MOD)\
+    \ value -= MOD;\n        return *this;\n    }\n    constexpr modint_static& operator*=(const\
+    \ modint_static& rhs) noexcept {\n        (value *= rhs.value) %= MOD; // \u5B9A\
+    \u6570\u3060\u3068\u30B3\u30F3\u30D1\u30A4\u30E9\u6700\u9069\u5316\u304C\u304B\
+    \u304B\u308B\n        return *this;\n    }\n    constexpr modint_static operator+(const\
+    \ modint_static& rhs) const noexcept {\n        modint_static cpy(*this);\n  \
+    \      return cpy += rhs;\n    }\n    constexpr modint_static operator-(const\
+    \ modint_static& rhs) const noexcept {\n        modint_static cpy(*this);\n  \
+    \      return cpy -= rhs;\n    }\n    constexpr modint_static operator*(const\
+    \ modint_static& rhs) const noexcept {\n        modint_static cpy(*this);\n  \
+    \      return cpy *= rhs;\n    }\n    constexpr modint_static pow(ll beki) const\
+    \ noexcept {\n        modint_static curbekimod(*this);\n        modint_static\
+    \ ret(1);\n        while (beki > 0) {\n            if (beki & 1) ret *= curbekimod;\n\
+    \            curbekimod *= curbekimod;\n            beki >>= 1;\n        }\n \
+    \       return ret;\n    }\n\n    // value\u306E\u9006\u5143\u3092\u6C42\u3081\
+    \u308B\n    constexpr modint_static inv() const noexcept {\n        // \u62E1\u5F35\
+    \u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5\n        auto [gcd_value_mod,\
+    \ inv_value] = innermath_modint::inv_gcd(value, MOD);\n        assert(gcd_value_mod\
+    \ == 1);\n        return modint_static(inv_value);\n    }\n    constexpr modint_static&\
+    \ operator/=(const modint_static& rhs) noexcept {\n        return (*this) *= rhs.inv();\n\
+    \    }\n    constexpr modint_static operator/(const modint_static& rhs) const\
+    \ noexcept {\n        modint_static cpy(*this);\n        return cpy /= rhs;\n\
+    \    }\n\n   private:\n    ll value;\n};\n\nusing mint998244353 = modint_static<998244353>;\n\
+    using mint1000000007 = modint_static<1000000007>;\n"
   code: "#pragma once\n\n#include<bits/stdc++.h>\n#include \"myLibrary/innermath_modint.hpp\"\
     \n\ntemplate <const int MOD>\nstruct modint_static {\n    using ll = long long;\n\
     \n   public:\n    constexpr modint_static(ll x = 0) noexcept : value(x % MOD)\
@@ -158,7 +157,7 @@ data:
   isVerificationFile: false
   path: myLibrary/modint_static.hpp
   requiredBy: []
-  timestamp: '2023-03-03 03:13:54+09:00'
+  timestamp: '2023-03-03 11:39:06+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: myLibrary/modint_static.hpp
