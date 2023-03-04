@@ -6,29 +6,29 @@ data:
     - icon: ':heavy_check_mark:'
       path: myLibrary/DisjointSparseTable.hpp
       title: Disjoint Sparse Table
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: myLibrary/innermath_modint.hpp
       title: myLibrary/innermath_modint.hpp
     - icon: ':heavy_check_mark:'
       path: myLibrary/modint_dynamic.hpp
       title: myLibrary/modint_dynamic.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: myLibrary/modint_static.hpp
       title: myLibrary/modint_static.hpp
     - icon: ':heavy_check_mark:'
       path: myLibrary/rollinghash.hpp
       title: rollinghash
+  - name: verify_tests/FPS_subset_sum TODO
+    pages:
+    - icon: ':warning:'
+      path: verify_tests/FPS_subset_sum TODO/FPS_subset_sum.cpp
+      title: verify_tests/FPS_subset_sum TODO/FPS_subset_sum.cpp
   verificationCategories:
   - name: verify_tests/DST
     pages:
     - icon: ':heavy_check_mark:'
       path: verify_tests/DST/StaticRMQ.test.cpp
       title: verify_tests/DST/StaticRMQ.test.cpp
-  - name: verify_tests/FPS_subset_sum TODO
-    pages:
-    - icon: ':x:'
-      path: verify_tests/FPS_subset_sum TODO/FPS_subset_sum.test.cpp
-      title: verify_tests/FPS_subset_sum TODO/FPS_subset_sum.test.cpp
   - name: verify_tests/modint_dynamic
     pages:
     - icon: ':heavy_check_mark:'

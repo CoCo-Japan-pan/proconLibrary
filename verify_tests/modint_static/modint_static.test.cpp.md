@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: myLibrary/innermath_modint.hpp
     title: myLibrary/innermath_modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: myLibrary/modint_static.hpp
     title: myLibrary/modint_static.hpp
   _extendedRequiredBy: []

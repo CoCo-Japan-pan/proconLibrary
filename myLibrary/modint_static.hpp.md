@@ -1,20 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: myLibrary/innermath_modint.hpp
     title: myLibrary/innermath_modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify_tests/FPS_subset_sum TODO/FPS_subset_sum.test.cpp
-    title: verify_tests/FPS_subset_sum TODO/FPS_subset_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify_tests/modint_static/modint_static.test.cpp
     title: verify_tests/modint_static/modint_static.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"myLibrary/modint_static.hpp\"\n\n#include<bits/stdc++.h>\n\
@@ -164,10 +161,9 @@ data:
   path: myLibrary/modint_static.hpp
   requiredBy: []
   timestamp: '2023-03-03 11:39:06+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify_tests/modint_static/modint_static.test.cpp
-  - verify_tests/FPS_subset_sum TODO/FPS_subset_sum.test.cpp
 documentation_of: myLibrary/modint_static.hpp
 layout: document
 redirect_from:
