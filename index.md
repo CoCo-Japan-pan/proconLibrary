@@ -12,7 +12,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: myLibrary/modint_dynamic.hpp
       title: myLibrary/modint_dynamic.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: myLibrary/modint_static.hpp
       title: myLibrary/modint_static.hpp
     - icon: ':heavy_check_mark:'
@@ -24,6 +24,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify_tests/DST/StaticRMQ.test.cpp
       title: verify_tests/DST/StaticRMQ.test.cpp
+  - name: verify_tests/FPS_subset_sum TODO
+    pages:
+    - icon: ':x:'
+      path: verify_tests/FPS_subset_sum TODO/FPS_subset_sum.test.cpp
+      title: verify_tests/FPS_subset_sum TODO/FPS_subset_sum.test.cpp
   - name: verify_tests/modint_dynamic
     pages:
     - icon: ':heavy_check_mark:'
@@ -31,7 +36,7 @@ data:
       title: verify_tests/modint_dynamic/modint_dynamic.test.cpp
   - name: verify_tests/modint_static
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify_tests/modint_static/modint_static.test.cpp
       title: verify_tests/modint_static/modint_static.test.cpp
   - name: verify_tests/rollinghash

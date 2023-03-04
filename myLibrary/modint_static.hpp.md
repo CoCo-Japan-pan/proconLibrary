@@ -7,11 +7,14 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':x:'
+    path: verify_tests/FPS_subset_sum TODO/FPS_subset_sum.test.cpp
+    title: verify_tests/FPS_subset_sum TODO/FPS_subset_sum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify_tests/modint_static/modint_static.test.cpp
     title: verify_tests/modint_static/modint_static.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"myLibrary/modint_static.hpp\"\n\n#include<bits/stdc++.h>\n\
@@ -161,9 +164,10 @@ data:
   path: myLibrary/modint_static.hpp
   requiredBy: []
   timestamp: '2023-03-03 11:39:06+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify_tests/modint_static/modint_static.test.cpp
+  - verify_tests/FPS_subset_sum TODO/FPS_subset_sum.test.cpp
 documentation_of: myLibrary/modint_static.hpp
 layout: document
 redirect_from:

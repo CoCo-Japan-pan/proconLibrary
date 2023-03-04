@@ -5,14 +5,17 @@ data:
   - icon: ':heavy_check_mark:'
     path: myLibrary/modint_dynamic.hpp
     title: myLibrary/modint_dynamic.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: myLibrary/modint_static.hpp
     title: myLibrary/modint_static.hpp
   _extendedVerifiedWith:
+  - icon: ':x:'
+    path: verify_tests/FPS_subset_sum TODO/FPS_subset_sum.test.cpp
+    title: verify_tests/FPS_subset_sum TODO/FPS_subset_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify_tests/modint_dynamic/modint_dynamic.test.cpp
     title: verify_tests/modint_dynamic/modint_dynamic.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify_tests/modint_static/modint_static.test.cpp
     title: verify_tests/modint_static/modint_static.test.cpp
   _isVerificationFailed: true
@@ -151,6 +154,7 @@ data:
   verifiedWith:
   - verify_tests/modint_dynamic/modint_dynamic.test.cpp
   - verify_tests/modint_static/modint_static.test.cpp
+  - verify_tests/FPS_subset_sum TODO/FPS_subset_sum.test.cpp
 documentation_of: myLibrary/innermath_modint.hpp
 layout: document
 redirect_from:

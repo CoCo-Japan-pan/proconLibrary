@@ -9,19 +9,22 @@ data:
     title: myLibrary/modint_static.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://yukicoder.me/problems/no/2235
+    IGNORE: ''
+    IGNORE_IF_CLANG: ''
+    IGNORE_IF_GCC: ''
     links:
-    - https://yukicoder.me/problems/no/2235
-  bundledCode: "#line 1 \"verify_tests/modint_static/modint_static.test.cpp\"\n#define\
-    \ PROBLEM \"https://yukicoder.me/problems/no/2235\"\n\n// \u63D0\u51FA\u6642\u306B\
-    assert\u306F\u30AA\u30D5\n#ifndef DEBUG\n#ifndef NDEBUG\n#define NDEBUG\n#endif\n\
-    #endif\n\n#include <bits/stdc++.h>\n#line 2 \"myLibrary/modint_static.hpp\"\n\n\
-    #line 2 \"myLibrary/innermath_modint.hpp\"\n\n#line 4 \"myLibrary/innermath_modint.hpp\"\
+    - https://yukicoder.me/problems/no/2062
+  bundledCode: "#line 1 \"verify_tests/FPS_subset_sum TODO/FPS_subset_sum.test.cpp\"\
+    \n#define PROBLEM \"https://yukicoder.me/problems/no/2062\"\n#define IGNORE //\
+    \ FPS\u30E9\u30A4\u30D6\u30E9\u30EA\u304C\u3067\u304D\u308B\u307E\u3067\n\n//\
+    \ \u63D0\u51FA\u6642\u306Bassert\u306F\u30AA\u30D5\n#ifndef DEBUG\n#ifndef NDEBUG\n\
+    #define NDEBUG\n#endif\n#endif\n\n#include <bits/stdc++.h>\n#line 2 \"myLibrary/modint_static.hpp\"\
+    \n\n#line 2 \"myLibrary/innermath_modint.hpp\"\n\n#line 4 \"myLibrary/innermath_modint.hpp\"\
     \n\n#ifdef _MSC_VER\n#include <intrin.h>\n#endif\n\nnamespace innermath_modint{\n\
     \    using ll = long long;\n    using ull = unsigned long long;\n    using u128\
     \ = __uint128_t;\n\n    // x\u306Emod\u3092[0, mod)\u3067\u8FD4\u3059\n    constexpr\
@@ -119,39 +122,69 @@ data:
     \    }\n    constexpr modint_static operator/(const modint_static& rhs) const\
     \ noexcept {\n        modint_static cpy(*this);\n        return cpy /= rhs;\n\
     \    }\n\n   private:\n    ll value;\n};\n\nusing mint998244353 = modint_static<998244353>;\n\
-    using mint1000000007 = modint_static<1000000007>;\n#line 12 \"verify_tests/modint_static/modint_static.test.cpp\"\
-    \nusing namespace std;\nusing ll = long long;\nusing mint = mint1000000007;\n\n\
-    #define ALL(x) (x).begin(), (x).end()\ntemplate <class T> using vec = vector<T>;\n\
-    \nint main() {\n    ios_base::sync_with_stdio(false);\n    cin.tie(nullptr);\n\
-    \    int N;\n    cin >> N;\n    vec<ll> x(N);\n    for(ll &num : x) cin >> num;\n\
-    \    // ((\u03A3x)^2 - \u03A3x^2) / \u03A3x + 1\n    mint sum = 0, sum_square\
-    \ = 0;\n    for(int i = 0; i < N; i++){\n        sum += x[i];\n        sum_square\
-    \ += x[i] * x[i];\n    }\n    mint ans = sum.pow(2) - sum_square;\n    ans /=\
-    \ sum;\n    ans++;\n    cout << ans.val() << \"\\n\";\n}\n"
-  code: "#define PROBLEM \"https://yukicoder.me/problems/no/2235\"\n\n// \u63D0\u51FA\
-    \u6642\u306Bassert\u306F\u30AA\u30D5\n#ifndef DEBUG\n#ifndef NDEBUG\n#define NDEBUG\n\
-    #endif\n#endif\n\n#include <bits/stdc++.h>\n#include \"myLibrary/modint_static.hpp\"\
-    \nusing namespace std;\nusing ll = long long;\nusing mint = mint1000000007;\n\n\
-    #define ALL(x) (x).begin(), (x).end()\ntemplate <class T> using vec = vector<T>;\n\
-    \nint main() {\n    ios_base::sync_with_stdio(false);\n    cin.tie(nullptr);\n\
-    \    int N;\n    cin >> N;\n    vec<ll> x(N);\n    for(ll &num : x) cin >> num;\n\
-    \    // ((\u03A3x)^2 - \u03A3x^2) / \u03A3x + 1\n    mint sum = 0, sum_square\
-    \ = 0;\n    for(int i = 0; i < N; i++){\n        sum += x[i];\n        sum_square\
-    \ += x[i] * x[i];\n    }\n    mint ans = sum.pow(2) - sum_square;\n    ans /=\
-    \ sum;\n    ans++;\n    cout << ans.val() << \"\\n\";\n}"
+    using mint1000000007 = modint_static<1000000007>;\n#line 13 \"verify_tests/FPS_subset_sum\
+    \ TODO/FPS_subset_sum.test.cpp\"\nusing mint = mint998244353;\nconstexpr int subset_mod\
+    \ = 999630629;\nusing namespace std;\nusing ll = long long;\n\n#define ALL(x)\
+    \ (x).begin(), (x).end()\ntemplate <class T> using vec = vector<T>;\n\nint main()\
+    \ {\n    ios_base::sync_with_stdio(false);\n    cin.tie(nullptr);\n    int N;\n\
+    \    cin >> N;\n    vec<int> A(N);\n    int all_sum = 0;\n    for(int &a : A)\
+    \ {\n        cin >> a;\n        all_sum += a;\n    }\n    sort(ALL(A));\n    //\
+    \ \u57FA\u672C\u7684\u306B\u7DCF\u548C\u306E2^(N-1)\u500D\u3067\u7D42\u308F\u308A\
+    \u3060\u304C\u3001999630629\u3092\u8D85\u3048\u308B\u3068\u5F15\u304B\u306A\u3044\
+    \u3068\u30C0\u30E1\n    // \u3044\u304F\u3064\u306Esubset\u3067\u3053\u308C\u304C\
+    \u8D77\u304D\u308B\u304B\u6570\u3048\u307E\u3059\n    ll haveToSubtract = 0;\n\
+    \    if(all_sum >= subset_mod){\n        multiset<int> sum_set;\n        int last_sum\
+    \ = all_sum - subset_mod;\n        // \u8981\u7D20\u306E\u7DCF\u548C\u304Clast_sum\u4EE5\
+    \u4E0B\u3068\u306A\u308Bsubset\u306E\u500B\u6570\u3092\u6570\u3048\u308B\n   \
+    \     for(int i = 0; i < N; i++){\n            multiset<int> cur_sum_set;\n  \
+    \          cur_sum_set.insert(0);\n            bool overFlag = false;\n      \
+    \      for(int sum : sum_set){\n                if(sum + A[i] <= last_sum){\n\
+    \                    cur_sum_set.insert(sum + A[i]);\n                } else {\n\
+    \                    if(cur_sum_set.empty()) overFlag = true;\n              \
+    \      break;\n                }\n            }\n            for(int cur_sum :\
+    \ cur_sum_set){\n                sum_set.insert(cur_sum);\n            }\n   \
+    \         if(overFlag) break;\n        }\n        haveToSubtract = sum_set.size();\n\
+    \    }\n    mint ans(all_sum);\n    ans *= mint(2).pow(N - 1);\n    ans -= mint(haveToSubtract)\
+    \ * mint(subset_mod);\n    cout << ans.val() << \"\\n\";\n}\n"
+  code: "#define PROBLEM \"https://yukicoder.me/problems/no/2062\"\n#define IGNORE\
+    \ // FPS\u30E9\u30A4\u30D6\u30E9\u30EA\u304C\u3067\u304D\u308B\u307E\u3067\n\n\
+    // \u63D0\u51FA\u6642\u306Bassert\u306F\u30AA\u30D5\n#ifndef DEBUG\n#ifndef NDEBUG\n\
+    #define NDEBUG\n#endif\n#endif\n\n#include <bits/stdc++.h>\n#include \"myLibrary/modint_static.hpp\"\
+    \nusing mint = mint998244353;\nconstexpr int subset_mod = 999630629;\nusing namespace\
+    \ std;\nusing ll = long long;\n\n#define ALL(x) (x).begin(), (x).end()\ntemplate\
+    \ <class T> using vec = vector<T>;\n\nint main() {\n    ios_base::sync_with_stdio(false);\n\
+    \    cin.tie(nullptr);\n    int N;\n    cin >> N;\n    vec<int> A(N);\n    int\
+    \ all_sum = 0;\n    for(int &a : A) {\n        cin >> a;\n        all_sum += a;\n\
+    \    }\n    sort(ALL(A));\n    // \u57FA\u672C\u7684\u306B\u7DCF\u548C\u306E2^(N-1)\u500D\
+    \u3067\u7D42\u308F\u308A\u3060\u304C\u3001999630629\u3092\u8D85\u3048\u308B\u3068\
+    \u5F15\u304B\u306A\u3044\u3068\u30C0\u30E1\n    // \u3044\u304F\u3064\u306Esubset\u3067\
+    \u3053\u308C\u304C\u8D77\u304D\u308B\u304B\u6570\u3048\u307E\u3059\n    ll haveToSubtract\
+    \ = 0;\n    if(all_sum >= subset_mod){\n        multiset<int> sum_set;\n     \
+    \   int last_sum = all_sum - subset_mod;\n        // \u8981\u7D20\u306E\u7DCF\u548C\
+    \u304Clast_sum\u4EE5\u4E0B\u3068\u306A\u308Bsubset\u306E\u500B\u6570\u3092\u6570\
+    \u3048\u308B\n        for(int i = 0; i < N; i++){\n            multiset<int> cur_sum_set;\n\
+    \            cur_sum_set.insert(0);\n            bool overFlag = false;\n    \
+    \        for(int sum : sum_set){\n                if(sum + A[i] <= last_sum){\n\
+    \                    cur_sum_set.insert(sum + A[i]);\n                } else {\n\
+    \                    if(cur_sum_set.empty()) overFlag = true;\n              \
+    \      break;\n                }\n            }\n            for(int cur_sum :\
+    \ cur_sum_set){\n                sum_set.insert(cur_sum);\n            }\n   \
+    \         if(overFlag) break;\n        }\n        haveToSubtract = sum_set.size();\n\
+    \    }\n    mint ans(all_sum);\n    ans *= mint(2).pow(N - 1);\n    ans -= mint(haveToSubtract)\
+    \ * mint(subset_mod);\n    cout << ans.val() << \"\\n\";\n}"
   dependsOn:
   - myLibrary/modint_static.hpp
   - myLibrary/innermath_modint.hpp
   isVerificationFile: true
-  path: verify_tests/modint_static/modint_static.test.cpp
+  path: verify_tests/FPS_subset_sum TODO/FPS_subset_sum.test.cpp
   requiredBy: []
   timestamp: '2023-03-04 20:56:13+09:00'
-  verificationStatus: TEST_ACCEPTED
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: verify_tests/modint_static/modint_static.test.cpp
+documentation_of: verify_tests/FPS_subset_sum TODO/FPS_subset_sum.test.cpp
 layout: document
 redirect_from:
-- /verify/verify_tests/modint_static/modint_static.test.cpp
-- /verify/verify_tests/modint_static/modint_static.test.cpp.html
-title: verify_tests/modint_static/modint_static.test.cpp
+- /verify/verify_tests/FPS_subset_sum TODO/FPS_subset_sum.test.cpp
+- /verify/verify_tests/FPS_subset_sum TODO/FPS_subset_sum.test.cpp.html
+title: verify_tests/FPS_subset_sum TODO/FPS_subset_sum.test.cpp
 ---
