@@ -7,43 +7,46 @@ struct rolhash_mod {
     using u64 = uint64_t;
 
    public:
-    constexpr rolhash_mod(u64 x = 0) : value(calcMod(x)) {}
+    constexpr rolhash_mod(u64 x = 0) noexcept : value(calcMod(x)) {}
 
-    constexpr u64 val() const { return value; }
+    constexpr u64 val() const noexcept { return value; }
 
-    constexpr rolhash_mod &operator+=(const rolhash_mod &a) {
+    constexpr rolhash_mod &operator+=(const rolhash_mod &a) noexcept {
         if ((value += a.value) >= MOD) value -= MOD;
         return *this;
     }
-    constexpr rolhash_mod &operator-=(const rolhash_mod &a) {
+    constexpr rolhash_mod &operator-=(const rolhash_mod &a) noexcept {
         *this += (MOD - a.value);
         return *this;
     }
-    constexpr rolhash_mod &operator*=(const rolhash_mod &a) {
+    constexpr rolhash_mod &operator*=(const rolhash_mod &a) noexcept {
         u128 product = (u128)value * a.value;
         product = (product >> 61) + (product & MOD);
         if (product >= MOD) product -= MOD;
         value = product;
         return *this;
     }
-    constexpr rolhash_mod operator+(const rolhash_mod &a) const {
+    constexpr rolhash_mod operator+(const rolhash_mod &a) const noexcept {
         rolhash_mod cpy(*this);
         return cpy += a;
     }
-    constexpr rolhash_mod operator-(const rolhash_mod &a) const {
+    constexpr rolhash_mod operator-(const rolhash_mod &a) const noexcept {
         rolhash_mod cpy(*this);
         return cpy -= a;
     }
-    constexpr rolhash_mod operator*(const rolhash_mod &a) const {
+    constexpr rolhash_mod operator*(const rolhash_mod &a) const noexcept {
         rolhash_mod cpy(*this);
         return cpy *= a;
     }
-    constexpr bool operator==(const rolhash_mod &a) const {
+    constexpr bool operator==(const rolhash_mod &a) const noexcept {
         return value == a.value;
+    }
+    constexpr bool operator!=(const rolhash_mod &a) const noexcept {
+        return value != a.value;
     }
 
     // べき乗のmod(tableを用意せずその場でやってるのでlog(beki)かかる)
-    constexpr static u64 power(u64 base, u64 beki) {
+    constexpr static u64 power(u64 base, u64 beki) noexcept {
         rolhash_mod curbekiMod(base);
         rolhash_mod ret(1);
         while (beki > 0) {
@@ -57,7 +60,7 @@ struct rolhash_mod {
    private:
     u64 value;  // 中で保持しておくmod
     constexpr static u64 MOD = (1ULL << 61) - 1;
-    constexpr static u64 calcMod(const u64 &x) {
+    constexpr static u64 calcMod(const u64 &x) noexcept {
         u64 cur = x >> 61;
         if ((cur += (x & MOD)) >= MOD) cur -= MOD;
         return cur;
